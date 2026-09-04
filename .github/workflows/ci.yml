@@ -36,12 +36,15 @@ jobs:
       - name: Install application dependencies
         run: pip install -r requirements.txt
 
-      - name: Install CI security tools
+      - name: Install CI security tools and test runner
         run: |
-          pip install ruff pip-audit bandit
+          pip install pytest ruff pip-audit bandit
 
       - name: Syntax check
         run: python -m py_compile app.py
+
+      - name: Unit tests
+        run: python -m pytest -v
 
       - name: Lint - Ruff
         run: ruff check .
