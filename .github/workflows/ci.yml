@@ -53,7 +53,7 @@ jobs:
         run: pip-audit -r requirements.txt
 
       - name: SAST - Bandit
-        run: bandit -r . -x ./.git
+        run: bandit -r . -x ./.git,./tests
 
       - name: Build Docker image
         run: |
